@@ -64,14 +64,14 @@ define(function(){
                         .attr("cy", function(d){
                                 return y_scale(d[1]);
                         })
-                        .attr("r", width/timeseries.length - 0.5);
+                        .attr("r", Math.max(width/timeseries.length - 0.5, 1));
                 /*
                 Add the y axis
                 */
                 var y_axis = d3.svg.axis().scale(y_scale).orient("left");
                 svg.append("g")
                         .attr("class", "y axis")
-                        .attr("transform", "translate(" + margin/2 + ", 0)")
+                        .attr("transform", "translate(" + margin*0.75 + ", 0)")
                         .call(y_axis);
                 /*
                 Append the x axis
@@ -90,8 +90,13 @@ define(function(){
 
         }
 
+        function test(){
+                console.log("Test success");
+        }
+
         return {
                 //Export the only function 
-                get_data: get_time_series_data
+                get_data: get_time_series_data,
+                test: test
         };
 });

@@ -10,10 +10,6 @@ public class quandlData {
     private final String quandl_api_key = "wvMUzzkjBgybjKKuPZVK";
     private final String quandl_api_time_series = "https://www.quandl.com/api/v3/datasets/WIKI/";
 
-    public quandlData(){
-
-    }
-
     public String getQuandlData(Map<String,String> requestParams) throws Exception {
         String stockName = requestParams.get("stock");
         String startDate = requestParams.get("start");
