@@ -1,14 +1,10 @@
-(define(function(){
-        function get_quandl_data(){
+define(function(){
+        function get_time_series_data(query, tag){
                 $.post("http://localhost:8080/data",
-                {
-                        stock: "GOOGL",
-                        start: "2011-11-20",
-                        end: "2012-11-20"
-                },
+                query,
                 function(data, status){
                         if (status == "success") {
-                                display_plot(data);
+                                display_plot(data, tag);
                         }
                         else {
                                 console.log(data);
@@ -16,7 +12,7 @@
                 });
         }
 
-        function display_plot(data) {
+        function display_plot(data, tag) {
                 var quandl_data = JSON.parse(data);
                 var margin = 60,
                         width = 750,
@@ -28,7 +24,6 @@
                 var dataset = quandl_data["dataset"];
                 col_names = dataset["column_names"]; // Get column names
                 timeseries = dataset["data"]; // Get time series data
-
 
                 /*
                 Get the extent (range) of the data in the time series
@@ -49,9 +44,9 @@
                         .domain(y_extent);
 
                 /*
-                Append the svg elements and append the data
+                Append the svg elements and append the data to the specific tag
                 */
-                var svg = d3.select("#visualization")
+                var svg = d3.select(tag)
                         .append("svg")
                         .attr("width", width)
                         .attr("height", height)
@@ -78,11 +73,9 @@
                         .attr("class", "y axis")
                         .attr("transform", "translate(" + margin/2 + ", 0)")
                         .call(y_axis);
-
                 /*
                 Append the x axis
                 */
-
                 var x_axis = d3.svg.axis()
                         .scale(x_scale)
                         .tickFormat(function (d){
@@ -95,9 +88,10 @@
                         .attr("transform", "translate(0," + (height - margin/2) + ")")
                         .call(x_axis);
 
-
         }
+
         return {
-                get_data: get_quandl_data()
+                //Export the only function 
+                get_data: get_time_series_data
         };
-}));
+});

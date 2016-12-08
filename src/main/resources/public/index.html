@@ -1,34 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Quandlab</title>
+	<meta charset="utf-8">
+	<title>Quandlab</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<script data-main="js/app" src="js/require.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-        <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Quandlab</a>
-                </div>
-        </nav>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Quandlab</a>
+		</div>
+	</nav>
 
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 col-md-offset-3">
+				<label for="stock-picker" class="control-label">Stock</label>
+				<div class="controls">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Stock name..." id="stock-picker-search">
+					</div><!-- /input-group -->
+				</div>
+			</div><!-- /.col-lg-6 -->
+		</div><!-- /.row -->
 
-        <div class="container-fluid">
-                <div class="row">
-                        <div class="col-md-8 col-md-offset-3" id="visualization">
+		<div class="row">
+			<div class="col-lg-3 col-md-offset-3">
+			<div class="control-group">
+				<label for="start-date-picker" class="control-label">Start date</label>
+				<div class="controls">
+					<div class="input-group">
+						<input id="start-date-picker" type="text" class="date-picker form-control" />
+						<label for="start-date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
 
-                        </div>
-                </div>
-        </div>
+						</label>
+					</div>
+				</div>
+			</div>
+			</div>
 
+			<div class="col-lg-3">
+			<div class="control-group">
+				<label for="end-date-picker" class="control-label">End date</label>
+				<div class="controls">
+					<div class="input-group">
+						<input id="end-date-picker" type="text" class="date-picker form-control" />
+						<label for="end-date-picker" class="input-group-addon btn"><span class="glyphicon glyphicon-calendar"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
 
-        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<div class="row">
+		<div class="col-lg-3 col-md-offset-3">
+			<button type="button" class="btn btn-default" id="search_button">Search</button>
+		</div>
+		</div>
 
-        <script data-main="js/app" src="js/require.js"></script>
-        <link rel="stylesheet" href="./css/style.css">
+		<script type="text/javascript">
+			$(".date-picker").datepicker();
+		</script>
+	</div>
+
+	
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-3" id="visualization">
+			</div>
+		</div>
+	</div>
+
 
 </body>
 </html>
