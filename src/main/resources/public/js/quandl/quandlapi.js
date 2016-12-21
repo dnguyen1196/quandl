@@ -12,6 +12,18 @@ define(function(){
                 });
         }
 
+        function get_json_data(query) {
+                $.post("http://localhost:8080/data",query,
+                function(data, status){
+                        if (status == "success") {
+                                return data;
+                        }
+                        else {
+                                console.log(data);
+                        }
+                });
+        }
+
         function display_plot(data, tag) {
                 var quandl_data = JSON.parse(data);
                 var margin = 60,
@@ -97,6 +109,7 @@ define(function(){
         return {
                 //Export the only function 
                 get_data: get_time_series_data,
-                test: test
+                test: test,
+                get_json_data: get_json_data
         };
 });

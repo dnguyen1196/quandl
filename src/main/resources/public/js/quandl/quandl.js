@@ -1,5 +1,4 @@
 
-
 define(function (require) {
 	var api = require('./quandlapi');
 
